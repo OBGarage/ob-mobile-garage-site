@@ -181,7 +181,7 @@ export default function Home() {
 
       <section className="map-section">
         <p className="section-label">Service area</p>
-        <h3>Proudly serving 80831 and nearby areas</h3>
+        <h3>Proudly serving Peyton, Falcon, Calhan, Colorado Springs and nearby areas</h3>
         <p>
           Great for home driveways, job sites, and busy schedules around Falcon,
           Peyton, and surrounding Colorado Springs communities.
@@ -278,7 +278,7 @@ export default function Home() {
         <div>
           <strong>OB Mobile Garage</strong>
           <p>
-            Mobile oil change and battery service for 80831 & surrounding areas.
+            Mobile oil change and battery service for Peyton, Falcon, Calhan, Colorado Springs & surrounding areas.
           </p>
         </div>
         <div>
