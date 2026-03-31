@@ -44,7 +44,7 @@ export default function Home() {
 
       <section className="hero">
         <div className="hero-text">
-          <span className="pill">Serving 80831 & surrounding areas</span>
+          <span className="pill">Serving Peyton, Falcon, Calhan, Colorado Springs & surrounding areas</span>
           <div className="hero-accent-line"></div>
           <h2>Mobile oil changes and battery service that come to you.</h2>
           <p>
