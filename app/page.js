@@ -95,9 +95,7 @@ export default function Home() {
             <strong>Quote + blades</strong>
           </div>
 
-          <p className="small-note">
-            Mobile services without a fee to travel to you!
-          </p>
+    
         </div>
       </section>
 
