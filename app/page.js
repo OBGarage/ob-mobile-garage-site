@@ -13,9 +13,10 @@ export default function Home() {
     <main className="site">
       <div className="accent-bar"></div>
 
-      <div className="battery-banner">
+      <section className="battery-banner">
         <div className="battery-banner-inner">
           <div>
+            <p className="section-label">Fast help available</p>
             <strong>Battery dead? We come to you.</strong>
             <p>
               Mobile battery replacement and quick on-site help for weak or dead
@@ -26,7 +27,7 @@ export default function Home() {
             Call for Battery Service
           </a>
         </div>
-      </div>
+      </section>
 
       <header className="topbar">
         <div className="brand">
@@ -37,20 +38,31 @@ export default function Home() {
           </div>
         </div>
 
-        <button className="primary-btn" onClick={scrollToBooking}>
-          Book Service
-        </button>
+        <div className="topbar-actions">
+          <a className="secondary-btn" href="tel:7192860067">
+            Call Now
+          </a>
+          <button className="primary-btn" onClick={scrollToBooking}>
+            Book Service
+          </button>
+        </div>
       </header>
 
       <section className="hero">
         <div className="hero-text">
           <span className="pill">Serving Peyton, Falcon, Calhan, Colorado Springs & surrounding areas</span>
           <div className="hero-accent-line"></div>
-          <h2>Mobile oil changes and battery service that come to you.</h2>
+          <h2>
+            Mobile oil changes and battery service that come to you — no
+            waiting, no shop visits.
+          </h2>
           <p>
             Fast, clean, reliable service without the shop wait. We bring oil
             changes, battery replacement, and basic maintenance right to your
             driveway or job site.
+          </p>
+          <p className="hero-trust">
+            Trusted local mobile service • Fast response • No shop wait
           </p>
 
           <div className="hero-actions">
@@ -61,10 +73,26 @@ export default function Home() {
               Call 719-286-0067
             </a>
           </div>
+
+          <div className="hero-highlights">
+            <div className="mini-stat">
+              <strong>Home or Job Site</strong>
+              <span>No waiting room</span>
+            </div>
+            <div className="mini-stat">
+              <strong>Simple Pricing</strong>
+              <span>Clear service options</span>
+            </div>
+            <div className="mini-stat">
+              <strong>Quick Add-Ons</strong>
+              <span>Batteries, filters, wipers</span>
+            </div>
+          </div>
         </div>
 
         <div className="pricing-card">
-          <h3>Popular Services</h3>
+          <p className="section-label">Popular Services</p>
+          <h3>Service Menu</h3>
 
           <div className="price-row">
             <span>Conventional Oil Change</span>
@@ -95,12 +123,14 @@ export default function Home() {
             <strong>Quote + blades</strong>
           </div>
 
-    
+      
         </div>
       </section>
 
       <section className="steps">
-        <h3>How booking works</h3>
+        <p className="section-label">How it works</p>
+        <h3>Simple, fast, and built around your schedule</h3>
+
         <div className="step-grid">
           <div className="step-card">
             <h4>1. Submit request</h4>
@@ -108,11 +138,11 @@ export default function Home() {
           </div>
           <div className="step-card">
             <h4>2. We confirm</h4>
-            <p>We contact you to confirm details and schedule.</p>
+            <p>We contact you to confirm details, pricing, and schedule.</p>
           </div>
           <div className="step-card">
             <h4>3. We come to you</h4>
-            <p>Service at your home or job site.</p>
+            <p>Service at your home or job site with a clean setup.</p>
           </div>
         </div>
       </section>
@@ -150,6 +180,7 @@ export default function Home() {
       </section>
 
       <section className="map-section">
+        <p className="section-label">Service area</p>
         <h3>Proudly serving 80831 and nearby areas</h3>
         <p>
           Great for home driveways, job sites, and busy schedules around Falcon,
@@ -159,7 +190,7 @@ export default function Home() {
         <div className="map-card">
           <iframe
             title="OB Mobile Garage Service Area Map"
-            src="https://www.google.com/maps?q=80831&output=embed"
+            src="https://www.google.com/maps?q=Falcon,Colorado&output=embed"
             className="map-frame"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
@@ -169,10 +200,11 @@ export default function Home() {
 
       <section id="booking" className="booking">
         <div className="booking-info">
-          <h3>Book your service online</h3>
+          <p className="section-label">Book online</p>
+          <h3>Request your service without leaving the website</h3>
           <p>
-            Use the form below to request service without leaving the website.
-            Once we receive it, we’ll reach out to confirm your appointment.
+            Use the form below to request service. Once we receive it, we’ll
+            reach out to confirm your appointment.
           </p>
 
           <div className="info-box">
@@ -183,6 +215,18 @@ export default function Home() {
               <li>Tell us if you need battery service</li>
               <li>Pick your preferred day and time window</li>
             </ul>
+          </div>
+
+          <div className="contact-card">
+            <strong>Need help instead?</strong>
+            <div className="contact-card-actions">
+              <a className="primary-btn" href="tel:7192860067">
+                Call 719-286-0067
+              </a>
+              <a className="secondary-btn" href="mailto:the.ob.garage@gmail.com">
+                Email Us
+              </a>
+            </div>
           </div>
         </div>
 
@@ -200,6 +244,7 @@ export default function Home() {
       </section>
 
       <section className="reviews">
+        <p className="section-label">Customer trust</p>
         <h3>Built on convenience, cleanliness, and reliability</h3>
         <div className="review-grid">
           <div className="review-card">
