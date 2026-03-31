@@ -96,8 +96,7 @@ export default function Home() {
           </div>
 
           <p className="small-note">
-            Mobile service is free in 80831. Outside the area, a travel fee may
-            apply.
+            Mobile services without a fee to travel to you!
           </p>
         </div>
       </section>
