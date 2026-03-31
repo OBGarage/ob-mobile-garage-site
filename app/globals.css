@@ -1,4 +1,291 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f6f7f9;
+  color: #18181b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.site {
+  min-height: 100vh;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 32px;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: 30px;
+}
+
+.tagline {
+  margin: 4px 0 0;
+  color: #666;
+}
+
+.hero {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 56px 32px;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 32px;
+}
+
+.pill {
+  display: inline-block;
+  padding: 8px 12px;
+  background: #eef2f7;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.hero h2 {
+  font-size: 48px;
+  line-height: 1.1;
+  margin: 0 0 18px;
+}
+
+.hero p {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #555;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.primary-btn,
+.secondary-btn {
+  border: none;
+  text-decoration: none;
+  padding: 14px 20px;
+  border-radius: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.primary-btn {
+  background: #111827;
+  color: white;
+}
+
+.secondary-btn {
+  background: white;
+  color: #111827;
+  border: 1px solid #d1d5db;
+}
+
+.pricing-card,
+.step-card,
+.info-box,
+.form-card,
+.review-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+.pricing-card {
+  padding: 24px;
+}
+
+.pricing-card h3 {
+  margin-top: 0;
+  font-size: 24px;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.price-row:last-of-type {
+  border-bottom: none;
+}
+
+.small-note {
+  margin-top: 16px;
+  font-size: 14px;
+  color: #666;
+}
+
+.steps,
+.booking,
+.reviews {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+.steps h3,
+.booking h3,
+.reviews h3 {
+  font-size: 34px;
+  margin-bottom: 24px;
+}
+
+.step-grid,
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.step-card,
+.review-card {
+  padding: 24px;
+}
+
+.booking {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.booking-info p {
+  color: #555;
+  line-height: 1.7;
+}
+
+.info-box {
+  padding: 20px;
+  margin-top: 24px;
+}
+
+.info-box h4 {
+  margin-top: 0;
+}
+
+.info-box ul {
+  margin: 12px 0 0;
+  padding-left: 18px;
+}
+
+.form-card {
+  overflow: hidden;
+}
+
+.form-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.form-header h4,
+.form-header p {
+  margin: 0;
+}
+
+.form-header p {
+  margin-top: 6px;
+  color: #666;
+}
+
+.form-frame {
+  width: 100%;
+  height: 1864px;
+  border: 0;
+}
+
+.stars {
+  margin-bottom: 14px;
+  font-size: 20px;
+}
+
+.footer {
+  margin-top: 32px;
+  padding: 24px 32px 80px;
+  background: white;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer p {
+  margin: 6px 0 0;
+  color: #666;
+}
+
+.sticky-call {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  background: #111827;
+  color: white;
+  text-decoration: none;
+  padding: 14px 18px;
+  border-radius: 999px;
+  font-weight: 700;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 900px) {
+  .hero,
+  .booking,
+  .step-grid,
+  .review-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h2 {
+    font-size: 36px;
+  }
+
+  .topbar {
+    padding: 18px 20px;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .steps,
+  .booking,
+  .reviews,
+  .hero {
+    padding: 24px 20px;
+  }
+
+  .sticky-call {
+    bottom: 14px;
+    right: 14px;
+  }
 }
