@@ -1,405 +1,156 @@
-html {
-  scroll-behavior: smooth;
-}
+"use client";
 
-:root {
-  --brand-green: #1f4d2e;
-  --brand-orange: #d97706;
-  --brand-black: #111827;
-  --brand-light: #f6f7f9;
-  --brand-border: #e5e7eb;
-  --brand-text: #18181b;
-  --brand-muted: #5f6673;
-}
+export default function OBMobileGarageBookingSite() {
+  const services = [
+    { name: 'Conventional Oil Change', price: '$60' },
+    { name: 'Full Synthetic Oil Change', price: '$85' },
+    { name: 'Battery Replacement Service', price: 'Quote + battery' },
+    { name: 'Engine Air Filter', price: '$20 + filter' },
+    { name: 'Cabin Air Filter', price: '$25 + filter' },
+    { name: 'Fluid Top-Off', price: '$15' },
+  ];
 
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: var(--brand-light);
-  color: var(--brand-text);
-}
+  const embeddedFormLink =
+    "https://docs.google.com/forms/d/e/1FAIpQLSd20d5t6hz5zERi--BNJwqKnApidcb5_PDbZrpSv5teCtq4_A/viewform?embedded=true";
 
-* {
-  box-sizing: border-box;
-}
+  const scrollToBooking = () => {
+    const el = document.getElementById("booking");
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
 
-.site {
-  min-height: 100vh;
-}
+  return (
+    <div className="min-h-screen bg-zinc-950 text-white">
+      {/* Top Accent */}
+      <div className="h-1.5 w-full bg-gradient-to-r from-green-800 via-zinc-300 to-orange-500" />
 
-.accent-bar {
-  height: 6px;
-  background: linear-gradient(
-    90deg,
-    var(--brand-green) 0%,
-    var(--brand-black) 55%,
-    var(--brand-orange) 100%
+      {/* Header */}
+      <header className="border-b border-white/10 bg-zinc-950/95">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
+          <div className="flex items-center gap-3">
+            <img src="/logo.png" className="h-12 w-12" />
+            <div>
+              <h1 className="text-2xl font-bold">OB Mobile Garage</h1>
+              <p className="text-sm text-zinc-400">Powered by Outdoor Brothers</p>
+            </div>
+          </div>
+
+          <button
+            onClick={scrollToBooking}
+            className="rounded-xl bg-gradient-to-r from-green-800 to-orange-500 px-5 py-2 text-sm font-semibold"
+          >
+            Book Service
+          </button>
+        </div>
+      </header>
+
+      {/* HERO */}
+      <section className="mx-auto max-w-6xl px-6 py-20">
+        <p className="text-sm text-green-400">
+          Serving 80831 & surrounding areas
+        </p>
+
+        <h2 className="mt-4 text-5xl font-bold leading-tight">
+          Mobile oil changes and battery service that come to you.
+        </h2>
+
+        <p className="mt-6 text-lg text-zinc-400 max-w-2xl">
+          Fast, clean, reliable service without the shop wait. We bring oil
+          changes, battery replacement, and basic maintenance right to your
+          driveway or job site.
+        </p>
+
+        <div className="mt-8 flex gap-3">
+          <button
+            onClick={scrollToBooking}
+            className="rounded-xl bg-gradient-to-r from-green-800 to-orange-500 px-6 py-3 font-semibold"
+          >
+            Request Booking
+          </button>
+
+          <a
+            href="tel:7192860067"
+            className="rounded-xl border border-white/20 px-6 py-3"
+          >
+            Call 719-286-0067
+          </a>
+        </div>
+      </section>
+
+      {/* SERVICES */}
+      <section className="mx-auto max-w-6xl px-6 py-10">
+        <h3 className="text-2xl font-bold mb-6">Popular Services</h3>
+
+        <div className="grid gap-4">
+          {services.map((service) => (
+            <div
+              key={service.name}
+              className="flex justify-between border border-white/10 rounded-xl p-4 bg-zinc-900"
+            >
+              <span>{service.name}</span>
+              <span className="text-orange-400 font-bold">
+                {service.price}
+              </span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* HOW IT WORKS */}
+      <section className="mx-auto max-w-6xl px-6 py-10">
+        <h3 className="text-2xl font-bold mb-6">How it works</h3>
+
+        <div className="grid md:grid-cols-3 gap-4">
+          <div className="bg-zinc-900 p-5 rounded-xl">
+            <h4 className="text-green-400 font-semibold">1. Submit request</h4>
+            <p className="text-zinc-400 mt-2">
+              Fill out the service form with your vehicle details.
+            </p>
+          </div>
+
+          <div className="bg-zinc-900 p-5 rounded-xl">
+            <h4 className="text-orange-400 font-semibold">2. We confirm</h4>
+            <p className="text-zinc-400 mt-2">
+              We contact you to confirm details and schedule.
+            </p>
+          </div>
+
+          <div className="bg-zinc-900 p-5 rounded-xl">
+            <h4 className="font-semibold">3. We come to you</h4>
+            <p className="text-zinc-400 mt-2">
+              Service at your home or job site.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* BOOKING */}
+      <section id="booking" className="mx-auto max-w-6xl px-6 py-16">
+        <h3 className="text-2xl font-bold mb-4">
+          Book your service online
+        </h3>
+
+        <iframe
+          src={embeddedFormLink}
+          className="w-full h-[1800px] border-0"
+        />
+      </section>
+
+      {/* FOOTER */}
+      <footer className="border-t border-white/10 px-6 py-10 text-center">
+        <p className="font-semibold">OB Mobile Garage</p>
+        <p className="text-zinc-400">
+          Mobile oil change and battery service
+        </p>
+        <p className="mt-2">719-286-0067</p>
+      </footer>
+
+      {/* STICKY CALL */}
+      <a
+        href="tel:7192860067"
+        className="fixed bottom-5 right-5 bg-gradient-to-r from-green-800 to-orange-500 px-5 py-3 rounded-full"
+      >
+        Call / Text Now
+      </a>
+    </div>
   );
-}
-
-.topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 32px;
-  background: white;
-  border-bottom: 1px solid var(--brand-border);
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.logo {
-  width: 56px;
-  height: 56px;
-  object-fit: contain;
-}
-
-.topbar h1 {
-  margin: 0;
-  font-size: 30px;
-}
-
-.tagline {
-  margin: 4px 0 0;
-  color: var(--brand-muted);
-}
-
-.hero {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 56px 32px;
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 32px;
-}
-
-.pill {
-  display: inline-block;
-  padding: 8px 12px;
-  background: #eef4ef;
-  color: var(--brand-green);
-  border: 1px solid #d8e6db;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  margin-bottom: 14px;
-}
-
-.hero-accent-line {
-  width: 110px;
-  height: 5px;
-  border-radius: 999px;
-  margin-bottom: 18px;
-  background: linear-gradient(
-    90deg,
-    var(--brand-green) 0%,
-    var(--brand-orange) 100%
-  );
-}
-
-.hero h2 {
-  font-size: 48px;
-  line-height: 1.1;
-  margin: 0 0 18px;
-}
-
-.hero p {
-  font-size: 18px;
-  line-height: 1.7;
-  color: var(--brand-muted);
-}
-
-.hero-actions {
-  display: flex;
-  gap: 12px;
-  margin-top: 24px;
-  flex-wrap: wrap;
-}
-
-.primary-btn,
-.secondary-btn {
-  text-decoration: none;
-  padding: 14px 20px;
-  border-radius: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  display: inline-block;
-  transition: 0.2s ease;
-}
-
-.primary-btn {
-  background: linear-gradient(
-    135deg,
-    var(--brand-green) 0%,
-    var(--brand-black) 100%
-  );
-  color: white;
-  border: none;
-  box-shadow: 0 10px 20px rgba(17, 24, 39, 0.15);
-}
-
-.primary-btn:hover {
-  transform: translateY(-1px);
-  opacity: 0.96;
-}
-
-.secondary-btn {
-  background: white;
-  color: var(--brand-black);
-  border: 1px solid #d1d5db;
-}
-
-.secondary-btn:hover {
-  border-color: var(--brand-orange);
-  color: var(--brand-orange);
-}
-
-.brand-card {
-  position: relative;
-}
-
-.brand-card::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 6px;
-  border-radius: 24px 0 0 24px;
-  background: linear-gradient(
-    180deg,
-    var(--brand-green) 0%,
-    var(--brand-orange) 100%
-  );
-}
-
-.pricing-card,
-.step-card,
-.info-box,
-.form-card,
-.review-card {
-  background: white;
-  border: 1px solid var(--brand-border);
-  border-radius: 24px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
-}
-
-.pricing-card {
-  padding: 24px 24px 24px 30px;
-}
-
-.pricing-card h3 {
-  margin-top: 0;
-  font-size: 24px;
-}
-
-.price-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 14px 0;
-  border-bottom: 1px solid #eee;
-}
-
-.price-row strong {
-  color: var(--brand-green);
-}
-
-.price-row:last-of-type {
-  border-bottom: none;
-}
-
-.small-note {
-  margin-top: 16px;
-  font-size: 14px;
-  color: var(--brand-muted);
-}
-
-.steps,
-.booking,
-.reviews {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 32px;
-}
-
-.steps h3,
-.booking h3,
-.reviews h3 {
-  font-size: 34px;
-  margin-bottom: 24px;
-}
-
-.step-grid,
-.review-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.step-card,
-.review-card {
-  padding: 24px 24px 24px 30px;
-}
-
-.step-card h4,
-.info-box h4,
-.form-header h4 {
-  color: var(--brand-green);
-}
-
-.booking {
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 28px;
-  align-items: start;
-}
-
-.booking-info p {
-  color: var(--brand-muted);
-  line-height: 1.7;
-}
-
-.info-box {
-  padding: 20px 20px 20px 26px;
-  margin-top: 24px;
-}
-
-.info-box h4 {
-  margin-top: 0;
-}
-
-.info-box ul {
-  margin: 12px 0 0;
-  padding-left: 18px;
-}
-
-.form-card {
-  overflow: hidden;
-}
-
-.form-header {
-  padding: 20px 24px 20px 30px;
-  border-bottom: 1px solid var(--brand-border);
-  background: linear-gradient(90deg, #f8fbf9 0%, #fff8f0 100%);
-}
-
-.form-header h4,
-.form-header p {
-  margin: 0;
-}
-
-.form-header p {
-  margin-top: 6px;
-  color: var(--brand-muted);
-}
-
-.form-frame {
-  width: 100%;
-  height: 1864px;
-  border: 0;
-}
-
-.stars {
-  margin-bottom: 14px;
-  font-size: 20px;
-  color: var(--brand-orange);
-}
-
-.review-card p {
-  color: var(--brand-muted);
-  line-height: 1.7;
-}
-
-.footer {
-  position: relative;
-  margin-top: 32px;
-  padding: 30px 32px 80px;
-  background: white;
-  border-top: 1px solid var(--brand-border);
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
-  overflow: hidden;
-}
-
-.footer-accent {
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 8px;
-  background: linear-gradient(
-    180deg,
-    var(--brand-green) 0%,
-    var(--brand-orange) 100%
-  );
-}
-
-.footer p {
-  margin: 6px 0 0;
-  color: var(--brand-muted);
-}
-
-.sticky-call {
-  position: fixed;
-  right: 18px;
-  bottom: 18px;
-  background: linear-gradient(
-    135deg,
-    var(--brand-green) 0%,
-    var(--brand-orange) 100%
-  );
-  color: white;
-  text-decoration: none;
-  padding: 14px 18px;
-  border-radius: 999px;
-  font-weight: 700;
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
-}
-
-@media (max-width: 900px) {
-  .hero,
-  .booking,
-  .step-grid,
-  .review-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .hero h2 {
-    font-size: 36px;
-  }
-
-  .topbar {
-    padding: 18px 20px;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-
-  .steps,
-  .booking,
-  .reviews,
-  .hero {
-    padding: 24px 20px;
-  }
-
-  .sticky-call {
-    bottom: 14px;
-    right: 14px;
-  }
-
-  .pricing-card,
-  .step-card,
-  .info-box,
-  .review-card {
-    padding-left: 24px;
-  }
-
-  .form-header {
-    padding-left: 24px;
-  }
 }
