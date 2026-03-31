@@ -17,7 +17,7 @@ export default function Home() {
         <div className="battery-banner-inner">
           <div>
             <p className="section-label">Fast help available</p>
-            <strong>Battery dead? We come to you.</strong>
+            <strong>Battery dead? We come to you — same day in most cases.</strong>
             <p>
               Mobile battery replacement and quick on-site help for weak or dead
               batteries.
@@ -50,7 +50,9 @@ export default function Home() {
 
       <section className="hero">
         <div className="hero-text">
-          <span className="pill">Serving Peyton, Falcon, Calhan, Colorado Springs & surrounding areas</span>
+          <span className="pill">
+            Serving Peyton, Falcon, Calhan, Colorado Springs & surrounding areas
+          </span>
           <div className="hero-accent-line"></div>
           <h2>
             Mobile oil changes and battery service that come to you — no
@@ -72,7 +74,14 @@ export default function Home() {
             <a className="secondary-btn" href="tel:7192860067">
               Call 719-286-0067
             </a>
+            <a className="secondary-btn" href="sms:7192860067">
+              Text Us
+            </a>
           </div>
+
+          <p className="hero-urgency">
+            ⚡ Limited daily slots — same-day service may be available
+          </p>
 
           <div className="hero-highlights">
             <div className="mini-stat">
@@ -104,7 +113,7 @@ export default function Home() {
           </div>
           <div className="price-row">
             <span>Battery Replacement Service</span>
-            <strong>20 + battery</strong>
+            <strong>Starting at quote + battery</strong>
           </div>
           <div className="price-row">
             <span>Engine Air Filter</span>
@@ -120,10 +129,13 @@ export default function Home() {
           </div>
           <div className="price-row">
             <span>Wiper Blade Replacement</span>
-            <strong>10 + blades</strong>
+            <strong>Quote + blades</strong>
           </div>
 
-      
+          <p className="small-note">
+            Mobile service is free in 80831. Outside the area, a travel fee may
+            apply.
+          </p>
         </div>
       </section>
 
@@ -161,7 +173,7 @@ export default function Home() {
           <div className="upsells-grid">
             <div className="mini-card">
               <strong>Battery Replacement</strong>
-              <p>Quote + battery</p>
+              <p>Starting at quote + battery</p>
             </div>
             <div className="mini-card">
               <strong>Wiper Blade Replacement</strong>
@@ -278,7 +290,7 @@ export default function Home() {
         <div>
           <strong>OB Mobile Garage</strong>
           <p>
-            Mobile oil change and battery service for Peyton, Falcon, Calhan, Colorado Springs & surrounding areas.
+            Mobile oil change and battery service for 80831 & surrounding areas.
           </p>
         </div>
         <div>
