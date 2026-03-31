@@ -1,5 +1,7 @@
 "use client";
 
+import { useMemo, useState } from "react";
+
 export default function Home() {
   const scrollToBooking = () => {
     const el = document.getElementById("booking");
@@ -9,9 +11,60 @@ export default function Home() {
   const formLink =
     "https://docs.google.com/forms/d/e/1FAIpQLSd20d5t6hz5zERi--BNJwqKnApidcb5_PDbZrpSv5teCtq4_A/viewform?embedded=true";
 
+  const [oilType, setOilType] = useState("synthetic");
+  const [vehicleType, setVehicleType] = useState("car");
+  const [batteryAddOn, setBatteryAddOn] = useState(false);
+  const [engineFilter, setEngineFilter] = useState(false);
+  const [cabinFilter, setCabinFilter] = useState(false);
+  const [wipers, setWipers] = useState(false);
+
+  const estimate = useMemo(() => {
+    let total = oilType === "synthetic" ? 85 : 60;
+
+    if (vehicleType === "truck" || vehicleType === "suv") {
+      total += 10;
+    }
+
+    if (engineFilter) total += 20;
+    if (cabinFilter) total += 25;
+    if (wipers) total += 25;
+
+    const low = total;
+    const high = total + (batteryAddOn ? 220 : 15);
+
+    return {
+      low,
+      high,
+      label: batteryAddOn
+        ? `Estimated total: $${low}–$${high} (battery depends on vehicle/battery type)`
+        : `Estimated total: $${low}–$${high}`,
+    };
+  }, [oilType, vehicleType, batteryAddOn, engineFilter, cabinFilter, wipers]);
+
   return (
     <main className="site">
       <div className="accent-bar"></div>
+
+      <section className="availability-banner">
+        <div className="availability-inner">
+          <div>
+            <p className="section-label">Next availability</p>
+            <strong>Limited daily slots — same-day service may be available.</strong>
+            <p>Fast response for oil changes, batteries, filters, and light maintenance.</p>
+          </div>
+          <div className="availability-actions">
+            <a
+              className="secondary-btn"
+              href="sms:7192860067?body=Hi, I need service. My vehicle is:"
+            >
+              Text to Book
+            </a>
+            <button className="primary-btn" onClick={scrollToBooking}>
+              Book Online
+            </button>
+          </div>
+        </div>
+      </section>
 
       <section className="battery-banner">
         <div className="battery-banner-inner">
@@ -41,6 +94,12 @@ export default function Home() {
         <div className="topbar-actions">
           <a className="secondary-btn" href="tel:7192860067">
             Call Now
+          </a>
+          <a
+            className="secondary-btn"
+            href="sms:7192860067?body=Hi, I need service. My vehicle is:"
+          >
+            Text Us
           </a>
           <button className="primary-btn" onClick={scrollToBooking}>
             Book Service
@@ -74,7 +133,10 @@ export default function Home() {
             <a className="secondary-btn" href="tel:7192860067">
               Call 719-286-0067
             </a>
-            <a className="secondary-btn" href="sms:7192860067">
+            <a
+              className="secondary-btn"
+              href="sms:7192860067?body=Hi, I need service. My vehicle is:"
+            >
               Text Us
             </a>
           </div>
@@ -113,7 +175,7 @@ export default function Home() {
           </div>
           <div className="price-row">
             <span>Battery Replacement Service</span>
-            <strong>Starting at $20 + battery</strong>
+            <strong>Starting at quote + battery</strong>
           </div>
           <div className="price-row">
             <span>Engine Air Filter</span>
@@ -129,13 +191,115 @@ export default function Home() {
           </div>
           <div className="price-row">
             <span>Wiper Blade Replacement</span>
-            <strong>$10 + blades</strong>
+            <strong>Quote + blades</strong>
           </div>
 
           <p className="small-note">
             Mobile service is free in 80831. Outside the area, a travel fee may
             apply.
           </p>
+        </div>
+      </section>
+
+      <section className="why-choose-us">
+        <p className="section-label">Why choose us</p>
+        <h3>Built for convenience, speed, and clean service</h3>
+        <div className="why-grid">
+          <div className="why-card">
+            <strong>We come to you</strong>
+            <p>Home driveway, work site, or wherever your vehicle is parked safely.</p>
+          </div>
+          <div className="why-card">
+            <strong>No wasted time</strong>
+            <p>Skip the shop wait and get back to your day faster.</p>
+          </div>
+          <div className="why-card">
+            <strong>Clean and professional</strong>
+            <p>Simple pricing, clean setup, and clear communication every time.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="estimator">
+        <div className="estimator-card">
+          <div className="estimator-copy">
+            <p className="section-label">Quick estimator</p>
+            <h3>Get a fast price estimate before you book</h3>
+            <p>
+              This gives customers a rough total before submitting the form.
+              Final pricing may vary based on vehicle, oil capacity, and battery type.
+            </p>
+          </div>
+
+          <div className="estimator-controls">
+            <label>
+              Oil type
+              <select value={oilType} onChange={(e) => setOilType(e.target.value)}>
+                <option value="conventional">Conventional</option>
+                <option value="synthetic">Full Synthetic</option>
+              </select>
+            </label>
+
+            <label>
+              Vehicle type
+              <select value={vehicleType} onChange={(e) => setVehicleType(e.target.value)}>
+                <option value="car">Car</option>
+                <option value="suv">SUV</option>
+                <option value="truck">Truck</option>
+              </select>
+            </label>
+
+            <label className="check">
+              <input
+                type="checkbox"
+                checked={batteryAddOn}
+                onChange={(e) => setBatteryAddOn(e.target.checked)}
+              />
+              Battery service
+            </label>
+
+            <label className="check">
+              <input
+                type="checkbox"
+                checked={engineFilter}
+                onChange={(e) => setEngineFilter(e.target.checked)}
+              />
+              Engine air filter
+            </label>
+
+            <label className="check">
+              <input
+                type="checkbox"
+                checked={cabinFilter}
+                onChange={(e) => setCabinFilter(e.target.checked)}
+              />
+              Cabin air filter
+            </label>
+
+            <label className="check">
+              <input
+                type="checkbox"
+                checked={wipers}
+                onChange={(e) => setWipers(e.target.checked)}
+              />
+              Wiper blades
+            </label>
+          </div>
+
+          <div className="estimate-result">
+            <strong>{estimate.label}</strong>
+            <div className="estimate-actions">
+              <a
+                className="secondary-btn"
+                href={`sms:7192860067?body=Hi, I got an estimate from the website and need service. Oil type: ${oilType}, Vehicle: ${vehicleType}.`}
+              >
+                Text This Estimate
+              </a>
+              <button className="primary-btn" onClick={scrollToBooking}>
+                Book This Service
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -191,6 +355,41 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="bundles">
+        <p className="section-label">Bundle and save</p>
+        <h3>Popular maintenance bundles</h3>
+        <div className="bundle-grid">
+          <div className="bundle-card">
+            <strong>Quick Care Bundle</strong>
+            <p>Oil change + engine air filter</p>
+            <span>Save $10 when bundled</span>
+          </div>
+          <div className="bundle-card">
+            <strong>Cabin Refresh Bundle</strong>
+            <p>Oil change + cabin air filter</p>
+            <span>Save $10 when bundled</span>
+          </div>
+          <div className="bundle-card">
+            <strong>Full Maintenance Bundle</strong>
+            <p>Oil change + both filters</p>
+            <span>Save $15 when bundled</span>
+          </div>
+        </div>
+      </section>
+
+      <section className="service-area-list">
+        <p className="section-label">Areas we serve</p>
+        <h3>Local mobile service across the eastern Colorado Springs area</h3>
+        <div className="area-tags">
+          <span>Peyton</span>
+          <span>Falcon</span>
+          <span>Calhan</span>
+          <span>Colorado Springs</span>
+          <span>Black Forest</span>
+          <span>Surrounding 80831 area</span>
+        </div>
+      </section>
+
       <section className="map-section">
         <p className="section-label">Service area</p>
         <h3>Proudly serving Peyton, Falcon, Calhan, Colorado Springs and nearby areas</h3>
@@ -207,6 +406,20 @@ export default function Home() {
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           ></iframe>
+        </div>
+      </section>
+
+      <section className="gallery">
+        <p className="section-label">In action</p>
+        <h3>Work photos build trust fast</h3>
+        <p>
+          Replace these placeholders with real photos from driveway jobs, truck setup,
+          clean work area, or completed service shots.
+        </p>
+        <div className="gallery-grid">
+          <div className="gallery-card">Add truck / setup photo</div>
+          <div className="gallery-card">Add driveway service photo</div>
+          <div className="gallery-card">Add completed job photo</div>
         </div>
       </section>
 
@@ -235,10 +448,23 @@ export default function Home() {
               <a className="primary-btn" href="tel:7192860067">
                 Call 719-286-0067
               </a>
+              <a
+                className="secondary-btn"
+                href="sms:7192860067?body=Hi, I need service. My vehicle is:"
+              >
+                Text Us
+              </a>
               <a className="secondary-btn" href="mailto:the.ob.garage@gmail.com">
                 Email Us
               </a>
             </div>
+          </div>
+
+          <div className="calendar-card">
+            <strong>Want true time-slot booking later?</strong>
+            <p>
+              Add Calendly or Square Appointments here when you’re ready for live calendar booking.
+            </p>
           </div>
         </div>
 
@@ -262,26 +488,23 @@ export default function Home() {
           <div className="review-card">
             <div className="stars">★★★★★</div>
             <p>
-              Super convenient and easy. Having the oil change done at home
-              saved me a ton of time.
+              Replace this with a real review from a local customer after your first jobs.
             </p>
-            <strong>Local customer</strong>
+            <strong>Mike R. — Falcon</strong>
           </div>
           <div className="review-card">
             <div className="stars">★★★★★</div>
             <p>
-              Clean, professional, and straightforward pricing. Exactly what I
-              was looking for.
+              Replace this with a real review that mentions convenience, driveway service, or battery help.
             </p>
-            <strong>Mobile service client</strong>
+            <strong>Sarah T. — Peyton</strong>
           </div>
           <div className="review-card">
             <div className="stars">★★★★★</div>
             <p>
-              Great option for busy schedules. The service at my job site made
-              it easy.
+              Replace this with a real review from a truck, SUV, or job-site customer.
             </p>
-            <strong>Colorado Springs area customer</strong>
+            <strong>Chris D. — Colorado Springs</strong>
           </div>
         </div>
       </section>
@@ -298,6 +521,12 @@ export default function Home() {
           <p>the.ob.garage@gmail.com</p>
         </div>
       </footer>
+
+      <div className="mobile-actions">
+        <a href="tel:7192860067">Call</a>
+        <a href="sms:7192860067?body=Hi, I need service. My vehicle is:">Text</a>
+        <a href="#booking">Book</a>
+      </div>
 
       <a className="sticky-call" href="tel:7192860067">
         Call / Text Now
