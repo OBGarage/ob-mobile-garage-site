@@ -113,7 +113,7 @@ export default function Home() {
           </div>
           <div className="price-row">
             <span>Battery Replacement Service</span>
-            <strong>Starting at quote + battery</strong>
+            <strong>Starting at $20 + battery</strong>
           </div>
           <div className="price-row">
             <span>Engine Air Filter</span>
@@ -129,7 +129,7 @@ export default function Home() {
           </div>
           <div className="price-row">
             <span>Wiper Blade Replacement</span>
-            <strong>Quote + blades</strong>
+            <strong>$10 + blades</strong>
           </div>
 
           <p className="small-note">
